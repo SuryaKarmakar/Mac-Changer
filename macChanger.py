@@ -1,5 +1,6 @@
 import subprocess
 import optparse
+import re
 
 #this function capture command line arguments
 def get_Arguments():
@@ -20,11 +21,28 @@ def mac_Changer(interface, newMac):
     subprocess.call(["ifconfig",interface,"down"])
     subprocess.call(["ifconfig",interface,"hw","ether",newMac])
     subprocess.call(["ifconfig",interface,"up"])
-    subprocess.call(["ifconfig",interface])
+    # subprocess.call(["ifconfig",interface])
+
+def get_Mac(interface):
+    interfaceOutput = str(subprocess.check_output(["ifconfig", interface])) #for pytohn 3
+    # interfaceOutput = subprocess.check_output(["ifconfig", interface]) #for python 2
+
+    macAddress = re.search(r'\w\w:\w\w:\w\w:\w\w:\w\w:\w\w', interfaceOutput)
+    if macAddress:
+        return macAddress.group(0)
+    else:
+        print("[-]Mac address not found..")
 
 def main():
     options = get_Arguments()
+    holdMac = get_Mac(options.interface)
+    print("Current MAC address : " + str(holdMac))
     mac_Changer(options.interface, options.newMac)
+    holdMac = get_Mac(options.interface)
+    if holdMac == options.newMac:
+        print("[+]MAC address was successfuly changed to " + str(holdMac))
+    else:
+        print("[-]MAC address not changed..")
+        
 if __name__ == "__main__":
     main()
-    

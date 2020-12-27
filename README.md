@@ -3,7 +3,7 @@ macChanger for Linux OS
 
 ## Usage
 ```
- sudo python macChanger.py --interface eth0 --mac aa:bb:cc:dd:ee:ff
+ sudo python3 macChanger.py --interface eth0 --mac aa:bb:cc:dd:ee:ff
 
 ```
 ## Options
