@@ -1,12 +1,16 @@
 # Mac-Changer
-macChanger for Linux OS 
+
+Simple Linux Mac Changer With Python
 
 ## Usage
+
 ```
  sudo python3 macChanger.py --interface eth0 --mac aa:bb:cc:dd:ee:ff
 
 ```
+
 ## Options
+
 ```
  -h, --help        For more info
  -i, --interface   Specify an Interface, e.g. eth0, wlan0
