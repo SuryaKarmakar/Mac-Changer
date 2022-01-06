@@ -1,15 +1,19 @@
 # Mac-Changer
 
-Simple Linux Mac Changer With Python
+Simple Linux Based Mac Changer With Python
 
-## Usage
+## Usage :
+
+```
+ sudo python3 macChanger.py --interface [interface name] --mac [new mac address]
+```
 
 ```
  sudo python3 macChanger.py --interface eth0 --mac aa:bb:cc:dd:ee:ff
 
 ```
 
-## Options
+## Options :
 
 ```
  -h, --help        For more info
